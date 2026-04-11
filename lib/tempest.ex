@@ -10,9 +10,7 @@ defmodule Tempest do
     dev by Keita.
   """
   def main do 
-    :gen_tcp
     
   end
-
 
 end

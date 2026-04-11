@@ -15,8 +15,8 @@ defmodule Packets do
   ]
   
 
-  def newListener(port \\ 80)
-  def newListener(port) do
+  def listen(port \\ 80)
+  def listen(port) do
     opts = [:binary, active: false, packet: :raw, reuseaddr: true]
     {:ok, socket} = :gen_tcp.listen(port, opts)
     accpet(socket)
