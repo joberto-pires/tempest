@@ -1,7 +1,8 @@
 defmodule Packets.Sniffing do
 
-  def start(port) do
-    Packets.listen(port)
-    
+  def start() do
+   Packets.open()
+   |> Packets.receive()
+   |> Packets.handle_cast()
   end
 end

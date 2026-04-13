@@ -17,7 +17,7 @@ defmodule Packets do
     :data
   ]
 
-  defp open() do
+  def open() do
     domain = 17
     protocol = 0x0003
     <<protocol_host::big-unsigned-integer-size(16)>> = <<protocol::native-unsigned-integer-size(16)>>
@@ -25,7 +25,7 @@ defmodule Packets do
     socket
   end
 
-  defp receive(socket) do
+  def receive(socket) do
     case :socket.recvfrom(socket, 1500, :nowait) do
       {:ok, {source, data}} -> 
         GenServer.cast(self(), {:socket_data, source, data})
@@ -38,23 +38,21 @@ defmodule Packets do
     end
   end
 
-  defp handle_cast({:socket_data, source, data}, socket) do
+  def handle_cast({:socket_data, source, data}, socket) do
     IO.puts("We have a new packet from #{source}")
     Packets.receive(socket)
     {:noreply, socket}
   end
 
-  defp handle_cast({:socket_error, reason}, socket) do
+  def handle_cast({:socket_error, reason}, socket) do
     IO.inspect(reason, "something went wrong")
     {:noreply, socket}
   end
 
-  defp handle_info({:"$socket", socket, :select, _select_handle}, socket) do
+  def handle_info({:"$socket", socket, :select, _select_handle}, socket) do
    IO.puts("new data is availiable") 
    Packets.receive(socket)
    {:noreply, socket}
   end
-
-
 
 end
