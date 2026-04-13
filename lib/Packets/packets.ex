@@ -38,4 +38,23 @@ defmodule Packets do
     end
   end
 
+  defp handle_cast({:socket_data, source, data}, socket) do
+    IO.puts("We have a new packet from #{source}")
+    Packets.receive(socket)
+    {:noreply, socket}
+  end
+
+  defp handle_cast({:socket_error, reason}, socket) do
+    IO.inspect(reason, "something went wrong")
+    {:noreply, socket}
+  end
+
+  defp handle_info({:"$socket", socket, :select, _select_handle}, socket) do
+   IO.puts("new data is availiable") 
+   Packets.receive(socket)
+   {:noreply, socket}
+  end
+
+
+
 end
