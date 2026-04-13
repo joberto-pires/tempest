@@ -1,21 +1,18 @@
 # Tempest
 
-**TODO: Add description**
+**A simple Firewall application written in Elixir**
 
-## Installation
+## Specifications
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `tempest` to your list of dependencies in `mix.exs`:
+- TCP/IP
+- Firewall
+- Packet Filtering
+- Packet Filtering Rules
+- Packet Filtering Rules Groups Members
+- Statless Analysis
 
-```elixir
-def deps do
-  [
-    {:tempest, "~> 0.1.0"}
-  ]
-end
-```
+### TODO
+- [x] Packet Filtering
+- [x] Packet Filtering Rules
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/tempest>.
-
+dev: Joao Alberto Pires Boff
