@@ -1,4 +1,4 @@
-defmodule TCP.Sniffing do
+defmodule Packets.Sniffing do
 
   def start(port) do
     Packets.listen(port)
